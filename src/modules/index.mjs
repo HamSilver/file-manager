@@ -9,3 +9,4 @@ export * from "./cp.mjs";
 export * from "./mv.mjs";
 export * from "./rm.mjs";
 export * from "./os.mjs";
+export * from "./hash.mjs";
