@@ -1,12 +1,12 @@
-import { chdir, cwd } from "node:process";
+import { chdir } from "node:process";
 
 export class Up {
   async do() {
     try {
-      await chdir('..');
-      console.log(`You are currently in ${cwd()}> `);
+      await chdir("..");
+      msg.show(msg.WHERE);
     } catch (_) {
-      console.log("Operation failed\n");
+      msg.show(msg.FAILED);
     }
   }
 }

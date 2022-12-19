@@ -1,4 +1,5 @@
-import { chdir, cwd, stdout } from "node:process";
+import { chdir } from "node:process";
+import * as msg from "./messages.mjs";
 
 export class Cd {
   async do() {
@@ -8,11 +9,11 @@ export class Cd {
       if (pathToGo) {
         await chdir(pathToGo);
       } else {
-        console.log('Invalid input\n');
+        msg.show(msg.INVALID);
       }
-      console.log(`You are currently in ${cwd()}> `);
+      msg.show(msg.WHERE);
     } catch (_) {
-      console.log("Operation failed\n");
+      msg.show(msg.FAILED);
     }
   }
 }

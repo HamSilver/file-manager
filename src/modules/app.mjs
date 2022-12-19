@@ -2,7 +2,7 @@ import { argv, stdin, stdout, chdir } from "node:process";
 import { resolve } from "node:path";
 import { homedir } from "node:os";
 import readline from "node:readline";
-import { CommandRouter, Cd, Up, Ls, Cat } from "./index.mjs";
+import { CommandRouter, Cd, Up, Ls, Cat, Add, Rn } from "./index.mjs";
 
 export class App {
   username = "";
@@ -18,11 +18,11 @@ export class App {
     this.addCommands();
     this.rlStream.on("line", async (line) => {
       if (line.trim() === "") return;
-      const cmdParts = line.split` `;
+      const cmdParts = line.split` `.filter((v)=>v);
       if (this.commandRouter.isExist(cmdParts[0])) {
         this.commandRouter.execute(
           cmdParts[0],
-          cmdParts.length > 1 ? line.split` `.slice(1) : []
+          cmdParts.length > 1 ? cmdParts.slice(1) : []
         );
       }
     });
@@ -47,6 +47,8 @@ export class App {
     this.commandRouter.register("up", new Up().do);
     this.commandRouter.register("ls", new Ls().do);
     this.commandRouter.register("cat", new Cat().do);
+    this.commandRouter.register("add", new Add().do);
+    this.commandRouter.register("rn", new Rn().do);
     this.commandRouter.register(".exit", () => this.onClose());
   }
 

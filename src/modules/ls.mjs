@@ -1,5 +1,6 @@
 import { readdir } from "node:fs/promises";
 import { cwd } from "node:process";
+import * as msg from "./messages.mjs";
 
 export class Ls {
   async do() {
@@ -13,9 +14,9 @@ export class Ls {
         Type: entry.isDirectory() ? "directory" : "file",
       }));
       console.table(result);
-      console.log(`You are currently in ${cwd()}> `);
+      msg.show(msg.WHERE);
     } catch (_) {
-      console.log("Operation failed\n");
+      msg.show(msg.FAILED);
     }
   }
 }
