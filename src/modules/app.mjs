@@ -18,6 +18,7 @@ import {
   Compress,
   Decompress,
 } from "./index.mjs";
+import * as msg from "./messages.mjs";
 
 export class App {
   username = "";
@@ -30,6 +31,7 @@ export class App {
     this.username = this.getUsername();
     console.log(`Welcome to the File Manager, ${this.username}!\n`);
     await chdir(resolve(homedir()));
+    msg.show(msg.WHERE);
     this.addCommands();
     this.rlStream.on("line", async (line) => {
       if (line.trim() === "") return;
