@@ -1,12 +1,13 @@
 {
   "name": "file-manager",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "File Manager using Node.js API",
+  "main": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/index.mjs"
   },
   "keywords": [],
-  "author": "",
+  "author": "Stanislav Kolpakov (hamsilver)",
   "license": "ISC"
 }
