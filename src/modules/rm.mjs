@@ -1,5 +1,5 @@
 import { rm } from "node:fs/promises";
-import { basename, resolve } from "node:path";
+import { resolve } from "node:path";
 import { cwd } from "node:process";
 import * as msg from "./messages.mjs";
 

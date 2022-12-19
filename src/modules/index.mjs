@@ -8,3 +8,4 @@ export * from "./rn.mjs";
 export * from "./cp.mjs";
 export * from "./mv.mjs";
 export * from "./rm.mjs";
+export * from "./os.mjs";
