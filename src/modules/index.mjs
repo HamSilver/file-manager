@@ -10,3 +10,5 @@ export * from "./mv.mjs";
 export * from "./rm.mjs";
 export * from "./os.mjs";
 export * from "./hash.mjs";
+export * from "./compress.mjs";
+export * from "./decompress.mjs";

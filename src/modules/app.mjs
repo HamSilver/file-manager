@@ -2,7 +2,22 @@ import { argv, stdin, stdout, chdir } from "node:process";
 import { resolve } from "node:path";
 import { homedir } from "node:os";
 import readline from "node:readline";
-import { CommandRouter, Cd, Up, Ls, Cat, Add, Rn, Cp, Mv, Rm, Os, Hash } from "./index.mjs";
+import {
+  CommandRouter,
+  Cd,
+  Up,
+  Ls,
+  Cat,
+  Add,
+  Rn,
+  Cp,
+  Mv,
+  Rm,
+  Os,
+  Hash,
+  Compress,
+  Decompress,
+} from "./index.mjs";
 
 export class App {
   username = "";
@@ -18,7 +33,7 @@ export class App {
     this.addCommands();
     this.rlStream.on("line", async (line) => {
       if (line.trim() === "") return;
-      const cmdParts = line.split` `.filter((v)=>v);
+      const cmdParts = line.split` `.filter((v) => v);
       if (this.commandRouter.isExist(cmdParts[0])) {
         this.commandRouter.execute(
           cmdParts[0],
@@ -54,6 +69,8 @@ export class App {
     this.commandRouter.register("rm", new Rm().do);
     this.commandRouter.register("os", new Os().do);
     this.commandRouter.register("hash", new Hash().do);
+    this.commandRouter.register("compress", new Compress().do);
+    this.commandRouter.register("decompress", new Decompress().do);
     this.commandRouter.register(".exit", () => this.onClose());
   }
 
