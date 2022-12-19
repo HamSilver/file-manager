@@ -2,7 +2,7 @@ import { argv, stdin, stdout, chdir } from "node:process";
 import { resolve } from "node:path";
 import { homedir } from "node:os";
 import readline from "node:readline";
-import { CommandRouter, Cd, Up, Ls } from "./index.mjs";
+import { CommandRouter, Cd, Up, Ls, Cat } from "./index.mjs";
 
 export class App {
   username = "";
@@ -46,6 +46,7 @@ export class App {
     this.commandRouter.register("cd", new Cd().do);
     this.commandRouter.register("up", new Up().do);
     this.commandRouter.register("ls", new Ls().do);
+    this.commandRouter.register("cat", new Cat().do);
     this.commandRouter.register(".exit", () => this.onClose());
   }
 
