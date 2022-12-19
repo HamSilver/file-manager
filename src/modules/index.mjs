@@ -7,3 +7,4 @@ export * from "./add.mjs";
 export * from "./rn.mjs";
 export * from "./cp.mjs";
 export * from "./mv.mjs";
+export * from "./rm.mjs";
