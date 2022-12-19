@@ -29,7 +29,7 @@ export class App {
 
   async init() {
     this.username = this.getUsername();
-    console.log(`Welcome to the File Manager, ${this.username}!\n`);
+    msg.show(msg.WELCOME, this.username);
     await chdir(resolve(homedir()));
     msg.show(msg.WHERE);
     this.addCommands();
@@ -77,7 +77,7 @@ export class App {
   }
 
   onClose() {
-    console.log(`Thank you for using File Manager, ${this.username}!`);
+    msg.show(msg.BYE, this.username);
     this.rlStream.close();
   }
 }
